@@ -71,6 +71,7 @@ const ChangeHandlers = ({setCron, cron}: {setCron: (cron: cronDate) => void, cro
     }
 
     const createHandlersTemplate = () => {
+
         return Object.keys(cron).map((type: string) =>
             <div className='changeHandler' key={`${type}-fieldset`}>
                 <label key={`${type}-label`}
@@ -86,6 +87,7 @@ const ChangeHandlers = ({setCron, cron}: {setCron: (cron: cronDate) => void, cro
                     )}
                 </select>
                 <input
+                    // @ts-ignore
                     value={cron[type]}
                     onChange={evt => setCron({...cron, [type]: evt.target.value})}
                     type="number"
