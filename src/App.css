@@ -1,0 +1,75 @@
+*{
+    box-sizing: border-box;
+    font-size: large;
+}
+
+.changeHandler{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+input[type="number"] {
+    width: 60px;
+}
+
+select, label{
+    width: 155px;
+}
+
+select{
+    margin-right: 12%;
+}
+
+legend {
+    font-size: 20px;
+}
+
+fieldset{
+    border: firebrick 2px solid;
+    border-radius: 10px;
+}
+span{
+    font-style: italic;
+    background-color: firebrick;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+}
+.App{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cron-field{
+    width: 50%;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+button{
+    width: 20%;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+    background-color: firebrick;
+    font-style: italic;
+    color: white;
+    font-size: 40px;
+}
+
+.controlPanel{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cron-output-field{
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    background-color: firebrick;
+    color: white;
+}
