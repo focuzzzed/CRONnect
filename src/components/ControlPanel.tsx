@@ -1,10 +1,10 @@
 import {cronDate} from "../App.tsx";
 
-const ControlPanel = ({cron, onSaveClick}: {cron: cronDate, onSaveClick: () => void}) => {
+const ControlPanel = ({cron, onSaveClick, onLoadClick}: {cron: cronDate, onSaveClick: () => void, onLoadClick: () => void}) => {
 
     return (
         <div className='controlPanel'>
-            <button>LOAD</button>
+            <button onClick={() => onLoadClick()}>LOAD</button>
             <input className='cron-field' value={Object.values(cron).join(' ')} readOnly/>
             <button onClick={() => onSaveClick()}>SAVE</button>
         </div>

@@ -75,7 +75,7 @@ const ChangeHandlers = ({setCron, cron}: {setCron: (cron: cronDate) => void, cro
             <div className='changeHandler' key={`${type}-fieldset`}>
                 <label key={`${type}-label`}
                        htmlFor={type}> {type.replace(/([A-Z])/g, ' $1').trim().toUpperCase()} </label>
-                <select name={type} key={`${type}-select`}
+                <select name={type} key={`${type}-select`} id={type}
                         onChange={evt => setCron({...cron, [type]: evt.target.value})}>
                     {TypesIntervals[type].map((currentInterval: { name: string, value: string }) =>
                         <option

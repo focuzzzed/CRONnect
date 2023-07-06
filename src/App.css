@@ -13,6 +13,12 @@ input[type="number"] {
     width: 60px;
 }
 
+input[type="number"]:focus {
+    outline: none;
+    border:2px solid firebrick;
+
+}
+
 select, label{
     width: 155px;
 }
@@ -38,7 +44,8 @@ span{
 }
 .App{
     max-width: 800px;
-    margin: 0 auto;
+    max-height: 800px;
+    margin: 30px auto;
 }
 
 .cron-field{

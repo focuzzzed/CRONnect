@@ -3,7 +3,6 @@ import {useState} from "react";
 import cronstrue from 'cronstrue';
 import ChangeHandlers from "./components/changeHandlers.tsx";
 import ControlPanel from "./components/ControlPanel.tsx";
-import HistoryList from "./components/HistoryList.tsx";
 
 export type cronDate = {
     minutes: string,
@@ -14,40 +13,34 @@ export type cronDate = {
 
 };
 
-export type HistoryItem = {
-    value: string,
-    description: string,
-};
-
 function App() {
     const defaultCron: cronDate = {
-        minutes:'*',
-        hours:'*',
+        minutes: '*',
+        hours: '*',
         dayOfMonth: '*',
         months: '*',
         dayOfWeek: '*',
     };
     const [cron, setCron] = useState(defaultCron);
-    const [history, setHistory] = useState([]);
+    const [tmpCron, setTmpCron] = useState(defaultCron)
 
-    const updateHistoryList = () => {
-        const newHistoryItem = {
-            value: Object.values(cron).join(' '),
-            description: cronstrue.toString(Object.values(cron).join(' ')),
-        }
-        setHistory([...history, newHistoryItem]);
+    const saveCurrentCron = () => {
+        setTmpCron(cron);
         setCron(defaultCron);
-        const chooseIntervalForm: HTMLFormElement = document.querySelector('.change-handlers-form');
-        chooseIntervalForm.reset();
-    };
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const intervalChooseForm: HTMLFormElement = document.querySelector('.change-handlers-form')!;
+        intervalChooseForm.reset();
+    }
+
+    const loadSavedCron = () => {
+        setCron(tmpCron);
+    }
 
     return (
         <div className='App'>
             <ChangeHandlers setCron={setCron} cron={cron}/>
-            <ControlPanel cron={cron} onSaveClick={updateHistoryList}/>
+            <ControlPanel cron={cron} onLoadClick = {loadSavedCron} onSaveClick={saveCurrentCron}/>
             <textarea className='cron-output-field' value={cronstrue.toString(Object.values(cron).join(' '))} readOnly></textarea>
-            <h1>history</h1>
-            <HistoryList history={history}/>
         </div>
     )
 }
